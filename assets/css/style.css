@@ -1,0 +1,58 @@
+/* GLOBAL STYLE DECLARATIONS */
+
+:root {
+    --background: rgb(65, 61, 67);
+    --pink: rgb(255, 97, 136);
+    --orange: rgb(252, 152, 103);
+    --yellow: rgb(255, 216, 102);
+    --green: rgb(169, 220, 118);
+    --blue: rgb(120, 220, 232);
+    --purple: rgb(171, 157, 242);
+    --white: rgb(250, 243, 233);
+
+}
+
+html {
+    font-size: 1rem;
+    margin: 0;
+    padding: 0;
+}
+
+/* CLASS DECLARATION TO POSITION ANY ITEM IN EXACT CENTER OF PAGE */
+.centered {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+body {
+    font-family: monospace;
+    text-align: center;
+    background-color: var(--background);
+    color: var(--white);
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+header nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 1rem 1.75rem
+}
+
+.btn {
+    background-color: var(--pink);
+    border: var(--pink);
+    color: var(--white);
+    justify-content: center;
+}
+.btn:hover {
+    color: var(--pink);
+    background-color:var(--white);
+    border: var(--white);
+}
