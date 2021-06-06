@@ -86,3 +86,15 @@ form {
     color: var(--blue);
 }
 
+#submitScoreForm {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    flex-direction: column;
+    align-content: center;
+}
+
+#submitScoreForm button {
+    margin-top: .5rem;
+}

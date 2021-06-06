@@ -10,7 +10,9 @@ var quizAnswerB = document.getElementById("quizAnswerB");
 var quizAnswerC = document.getElementById("quizAnswerC");
 var quizAnswerD = document.getElementById("quizAnswerD");
 var quizAnswers = document.getElementsByClassName("quizAnswers");
-scoreEl.textContent = "Score: "
+var submitScoreBtnEl = document.getElementById("submitScoreBtn");
+var tryAgainBtnEl = document.getElementById("tryAgainBtn");
+var submitScoreFormEl = document.getElementById("submitScoreForm")
 var playerInfo = {
     name: "player",
     score: 0,
@@ -27,6 +29,9 @@ window.onload = function() {
     quizFormEl.style.display = "none";
     scoreEl.style.display = "none";
     timerEl.style.display = "none";
+    submitScoreFormEl.style.display = "none";
+    
+    
     startBtnEl.textContent = "Begin Quiz";
 
 }
@@ -81,15 +86,6 @@ function timer() {
     }, 1000);
 
     };
- // track index   
-// initialize questions
-    // set up onclick() handlers
-    // set textcontent to whatever the index is
-// onclick() handler
-    // check if answer is correct, increment score or decrement time
-// increment index
-// is there another question for that index --> if yes, set textcontent for question to whatever index is, if not display final score screen
-
 
     // EVENT LISTENERS FOR QUIZ ANSWERS
     quizAnswerA.addEventListener("click", function(){
@@ -130,11 +126,31 @@ function timer() {
     initializeQuestions();
 });
 
+
     
 
 
-function displayScore() {
-    window.alert("You did it!")
+function displayScore() { 
+    // hide quiz content and display user's final score
+    var finalTime = time;
+    clearInterval(timer);
+    quizFormEl.style.display = "none";
+    scoreEl.style.display = "none";
+    timerEl.style.display = "none";
+    submitScoreFormEl.style.display = "flex";
+    var finalScore = playerInfo.score + finalTime;
+    var gameOverTextEl = document.getElementById("gameOverText");
+    if (time > 0 && index >= quizContent.length) {
+        gameOverTextEl.textContent = "You finished the quiz with a final score of " + finalScore + "!" + " Would you like to submit your score?"
+    } else {
+        gameOverTextEl.textContent = "Time's up! Your final score is " + finalScore + document.createElement("br") + "Submit score anyways?"
+    }
+    submitScoreBtnEl.addEventListener("click", function() {
+        var highScore = {name: playerInfo.name, score: finalScore};
+        localStorage.setItem("highScore", JSON.stringify(highScore));
+    })
+
+
 };
 
 
