@@ -32,16 +32,23 @@ body {
   color: var(--white);
 }
 
+header {
+height: 3rem;}
+
 ul {
   list-style: none;
   padding: 0;
 }
 
 header nav ul {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin: 1rem 1.75rem;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  margin: 1rem;
+  color: var(--orange);
+  position:-webkit-sticky
 }
 
 .btn {
@@ -55,6 +62,8 @@ header nav ul {
   background-color: var(--white);
   border: var(--white);
 }
+
+/* QUIZ FORM STYLES */
 /* reset some styles of bootstrap's vertical button group  */
 .btn-group-vertical > .btn-group:not(:first-child),
 .btn-group-vertical > .btn:not(:first-child) {
@@ -64,6 +73,7 @@ header nav ul {
 .btn-group-vertical > .btn-group:not(:last-child) > .btn,
 .btn-group-vertical > .btn:not(:last-child):not(.dropdown-toggle) {
     border-radius: 0.3em;
+    margin-top: 0.5rem;
 }
 
 form {
@@ -71,3 +81,8 @@ form {
     border: 2rem solid rgb(47, 45, 48);
     border-radius: .5rem;
 }
+
+#quizQuestion {
+    color: var(--blue);
+}
+
