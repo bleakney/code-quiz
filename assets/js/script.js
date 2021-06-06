@@ -10,8 +10,15 @@ var quizAnswerB = document.getElementById("quizAnswerB");
 var quizAnswerC = document.getElementById("quizAnswerC");
 var quizAnswerD = document.getElementById("quizAnswerD");
 var quizAnswers = document.getElementsByClassName("quizAnswers");
-var score =  + currentScore;
-scoreEl.textContent = "Score: " + score;
+scoreEl.textContent = "Score: "
+var playerInfo = {
+    name: "player",
+    score: 0,
+    incrementScore: function() {
+        this.score += 10;
+        scoreEl.textContent = "Score: " + this.score;
+    }
+}
 var time = 80;
 var index = 0;
 
@@ -83,18 +90,11 @@ function timer() {
 // increment index
 // is there another question for that index --> if yes, set textcontent for question to whatever index is, if not display final score screen
 
-function incrementScore() {
-    score = score + 10;
-    scoreEl.textContent = "Score: " + score;
-    
-
-}
-
 
     // EVENT LISTENERS FOR QUIZ ANSWERS
     quizAnswerA.addEventListener("click", function(){
         if (quizContent[index].correctAnswer ==="a"){
-           incrementScore();
+           playerInfo.incrementScore();
     } else {
         time = time - 10;
     }
@@ -103,7 +103,7 @@ function incrementScore() {
 });
     quizAnswerB.addEventListener("click", function(){
         if (quizContent[index].correctAnswer ==="b"){
-            incrementScore();
+            playerInfo.incrementScore();
     } else {
        time = time - 10;
     }
@@ -112,7 +112,7 @@ function incrementScore() {
 });
     quizAnswerC.addEventListener("click", function(){
         if (quizContent[index].correctAnswer ==="c"){
-            incrementScore();
+            playerInfo.incrementScore();
     } else {
         time = time - 10;
     }
@@ -122,7 +122,7 @@ function incrementScore() {
 })
     quizAnswerD.addEventListener("click", function(){
         if (quizContent[index].correctAnswer ==="d"){
-          incrementScore();
+          playerInfo.incrementScore();
     } else {
         time = time - 10
     }
