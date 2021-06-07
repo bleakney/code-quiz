@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+    />
+    <title>Code Quiz</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li id="highscoresBtn"></li>
+          <li id="currentScore"></li>
+          <li id="timer"></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+        <button type="button" class="btn btn-lg centered" id="startBtn"></button>
+        <form id="quizForm" class="centered">
+            <h3 id="quizQuestion"></h3>
+            <div class="btn-group-vertical">
+                <button type="button" id="quizAnswerA" class="btn btn-lg quizAnswers"></button>
+                <button type="button" id="quizAnswerB" class="btn btn-lg quizAnswers"></button>
+                <button type="button" id="quizAnswerC" class="btn btn-lg quizAnswers"></button>
+                <button type="button" id="quizAnswerD" class="btn btn-lg quizAnswers"></button>
+            </div>
+
+        </form>
+    </main>
+        <form id="submitScoreForm" class="centered">
+            <h2 id="gameOverText"></h2>
+            <input type="text" class="form-control" name="username" placeholder="username" aria-label="Username" aria-describedby="basic-addon1" />
+            <div class="d-grid gap-2">
+            <button type="button" class="btn btn-lg" id="submitScoreBtn">Submit Score</button>
+          <!-- Retry Button: absence of "type='button'" triggers auto page reload -->
+            <button type="button" class="btn btn-lg" id="tryAgainBtn">Try Again</button>
+        </div>
+        </form>
+        <section id="highScores" class="centered">
+            <h2>high scores</h2>
+            <ol id="highScoresList" class="list-group list-group-numbered"></ol>
+        </section>
+
+    <script src="assets/js/script.js"></script>
+  </body>
+</html>

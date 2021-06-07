@@ -1,0 +1,119 @@
+/* GLOBAL STYLE DECLARATIONS */
+
+:root {
+  --background: rgb(65, 61, 67);
+  --pink: rgb(255, 97, 136);
+  --orange: rgb(252, 152, 103);
+  --yellow: rgb(255, 216, 102);
+  --green: rgb(169, 220, 118);
+  --blue: rgb(120, 220, 232);
+  --purple: rgb(171, 157, 242);
+  --white: rgb(250, 243, 233);
+}
+
+html {
+  font-size: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+/* CLASS DECLARATION TO POSITION ANY ITEM IN EXACT CENTER OF PAGE */
+.centered {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+body {
+  font-family: monospace;
+  text-align: center;
+  background-color: var(--background);
+  color: var(--white);
+}
+
+header {
+padding-bottom: 3rem;}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+header nav ul {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  margin: 1rem;
+  color: var(--orange);
+  position:-webkit-sticky
+}
+
+.btn {
+  background-color: var(--pink);
+  border: var(--pink);
+  color: var(--white);
+  justify-content: center;
+}
+.btn:hover {
+  color: var(--pink);
+  background-color: var(--white);
+  border: var(--white);
+}
+
+/* QUIZ FORM STYLES */
+/* reset some styles of bootstrap's vertical button group  */
+.btn-group-vertical > .btn-group:not(:first-child),
+.btn-group-vertical > .btn:not(:first-child) {
+  margin-top: 0.5rem;
+  border-radius: 0.3em;
+}
+.btn-group-vertical > .btn-group:not(:last-child) > .btn,
+.btn-group-vertical > .btn:not(:last-child):not(.dropdown-toggle) {
+    border-radius: 0.3em;
+    margin-top: 0.5rem;
+}
+
+form {
+    background-color: rgb(47, 45, 48);
+    border: 2rem solid rgb(47, 45, 48);
+    border-radius: .5rem;
+}
+
+#quizQuestion {
+    color: var(--blue);
+}
+
+#submitScoreForm {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    flex-direction: column;
+    align-content: center;
+}
+
+#submitScoreForm button {
+    margin-top: .5rem;
+}
+
+#highScores {
+  display: flex;
+  align-items:center;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  flex-direction: column;
+  align-content: center;
+}
+
+#highScores h2 {
+  color: -var(--yellow);
+}
+
+#highScores ol li {
+  background-color: var(--background);
+  color: var(--blue);
+
+}
