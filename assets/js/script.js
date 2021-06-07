@@ -1,5 +1,6 @@
 // global variable declarations 
 var highscoresEl = document.getElementById("highscoresBtn");
+var highScores = [];
 var timerEl = document.getElementById("timer");
 var scoreEl = document.getElementById("currentScore");
 var startBtnEl = document.getElementById("startBtn");
@@ -13,8 +14,9 @@ var quizAnswers = document.getElementsByClassName("quizAnswers");
 var submitScoreBtnEl = document.getElementById("submitScoreBtn");
 var tryAgainBtnEl = document.getElementById("tryAgainBtn");
 var submitScoreFormEl = document.getElementById("submitScoreForm")
+var highScoresEl = document.getElementById("highScores")
+var highScoresListEl = document.getElementById("highScoresList");
 var playerInfo = {
-    name: "player",
     score: 0,
     incrementScore: function() {
         this.score += 10;
@@ -24,12 +26,14 @@ var playerInfo = {
 var time = 80;
 var index = 0;
 
-// hide quiz form on page load
+// hide quiz form and high scores on page load
 window.onload = function() {
     quizFormEl.style.display = "none";
     scoreEl.style.display = "none";
     timerEl.style.display = "none";
+    highScoresEl.style.display = "none";
     submitScoreFormEl.style.display = "none";
+    scoreEl.textContent = "Score: 0";
     
     
     startBtnEl.textContent = "Begin Quiz";
@@ -60,7 +64,7 @@ function initializeQuestions() {
         quizAnswerB.textContent = quizContent[index].answers.b;
         quizAnswerC.textContent = quizContent[index].answers.c;
         quizAnswerD.textContent = quizContent[index].answers.d;
-    } else {displayScore()}
+    } else {gameOver()}
 };
 
 
@@ -130,10 +134,11 @@ function timer() {
     
 
 
-function displayScore() { 
-    // hide quiz content and display user's final score
+function gameOver() { 
+    // stop timer
     var finalTime = time;
     clearInterval(timer);
+    // hide quiz content and display user's final score
     quizFormEl.style.display = "none";
     scoreEl.style.display = "none";
     timerEl.style.display = "none";
@@ -141,50 +146,36 @@ function displayScore() {
     var finalScore = playerInfo.score + finalTime;
     var gameOverTextEl = document.getElementById("gameOverText");
     if (time > 0 && index >= quizContent.length) {
-        gameOverTextEl.textContent = "You finished the quiz with a final score of " + finalScore + "!" + " Would you like to submit your score?"
+        gameOverTextEl.textContent = "You finished the quiz with a final score of " + finalScore + "!" + " Please enter a username to submit your score:"
     } else {
-        gameOverTextEl.textContent = "Time's up! Your final score is " + finalScore + document.createElement("br") + "Submit score anyways?"
+        gameOverTextEl.textContent = "Time's up! Your final score is " + finalScore + document.createElement("br") + "To submit your score anyways, enter a username:"
     }
     submitScoreBtnEl.addEventListener("click", function() {
-        var highScore = {name: playerInfo.name, score: finalScore};
-        localStorage.setItem("highScore", JSON.stringify(highScore));
-    })
+        var usernameInput = document.querySelector("input[name='username']").value;
+        if (!usernameInput) {
+            window.alert("Please enter a valid username!")
+            return false;
+        }
+        var highScoresDataObj = {name: usernameInput, score: finalScore};
+        highScores.push(highScoresDataObj);
+        localStorage.setItem("highScores", JSON.stringify(highScores));
+        var savedScores = [localStorage.getItem("highScores")];
+    savedScores = JSON.parse(savedScores);
+    for (i = 0; i < savedScores.length; i++) {
+        var userHighScoreEl = document.createElement("li");
+        userHighScoreEl.className = "list-group-item";
+        highScoresListEl.appendChild(userHighScoreEl);
+        userHighScoreEl.textContent = savedScores[i].name + " - " + savedScores[i].score;
+        displayHighscores();
+
+    }
 
 
-};
+});
+}
 
-
-// 
-
-
-// quizAnswerA.addEventListener("click", function(){
-//     if (quizContent[i].correctAnswer === "a") {
-//         score + 10;
-//     } else {
-//         time - 10;
-//     }
-//     i++;
-//     quizQuestions();
-// });
-// quizAnswerB.addEventListener("click", function(){
-//     if (quizContent[i].correctAnswer === "b") {
-//         score + 10;
-//     } else {
-//         time - 10;
-//     }
-
-// });
-// quizAnswerC.addEventListener("click", function(){
-// if (quizContent[i].correctAnswer === "c") {
-//     score + 10;
-// } else {
-//     time - 10;
-// }
-// });
-// quizAnswerD.addEventListener("click", function(){
-// if (quizContent[i].correctAnswer === "d") {
-//     score + 10;
-// } else {
-//     time - 10;
-// }
-// }
+// high scores display screen
+function displayHighscores(){
+    submitScoreFormEl.style.display = "none";
+    highScoresEl.style.display = "flex";
+}

@@ -42,12 +42,17 @@
     </main>
         <form id="submitScoreForm" class="centered">
             <h2 id="gameOverText"></h2>
-            <button type="button" class="btn btn-lg" id="submitScoreBtn" data-bs-toggle="modal" data-bs-target="#exampleModal">Submit Score</button>
-            <button class="btn btn-lg" id="tryAgainBtn">Try Again</button>
+            <input type="text" class="form-control" name="username" placeholder="username" aria-label="Username" aria-describedby="basic-addon1" />
+            <div class="d-grid gap-2">
+            <button type="button" class="btn btn-lg" id="submitScoreBtn">Submit Score</button>
+          <!-- Retry Button: absence of "type='button'" triggers auto page reload -->
+            <button type="button" class="btn btn-lg" id="tryAgainBtn">Try Again</button>
+        </div>
         </form>
-
-        <!-- HIGH SCORES MODAL -->
-
+        <section id="highScores" class="centered">
+            <h2>high scores</h2>
+            <ol id="highScoresList" class="list-group list-group-numbered"></ol>
+        </section>
 
     <script src="assets/js/script.js"></script>
   </body>
